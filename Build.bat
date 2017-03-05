@@ -1,7 +1,24 @@
-@echo off
+@echo Off
+set config=%1
+if "%config%" == "" (
+   set config=Release
+)
+ 
+set version=1.0.0
+if not "%PackageVersion%" == "" (
+   set version=%PackageVersion%
+)
 
-set msbuild="%ProgramFiles(x86)%\MSBuild\14.0\Bin\msbuild.exe"
+set nuget=
+if "%nuget%" == "" (
+	set nuget=nuget
+)
 
-%msbuild% WebSocket4Net.build /t:Build
+%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild WebSocket4Net\WebSocket4Net.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false
 
-pause
+mkdir Build
+mkdir Build\lib
+mkdir Build\lib\net40
+mkdir Build\lib\net45
+
+%nuget% pack "WebSocket4Net\nuget\WebSocket4Net.nuspec" -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"
