@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>WebSocket4Net</id>
-    <version>0.15.beta7.Unofficial</version>
+    <version>0.15.0.7</version>
     <authors>Kerry Jiang</authors>
     <owners>Kerry Jiang</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -12,6 +12,6 @@
     <tags>WebSocket, WebSocket4Net, SuperWebSocket</tags>
   </metadata>
     <files>
-	<file src="WebSocket4Net\WebSocket4Net\bin\$configuration$\WebSocket4Net.dll" target="lib\net45\" />	
+	<file src="..\WebSocket4Net\bin\$configuration$\WebSocket4Net.dll" target="lib\net45\" />	
   </files>
 </package>
